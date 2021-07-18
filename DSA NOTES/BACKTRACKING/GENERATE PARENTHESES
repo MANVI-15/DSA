@@ -1,0 +1,58 @@
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses of length 2*n.
+
+For example, given n = 3, a solution set is:
+
+"((()))", "(()())", "(())()", "()(())", "()()()"
+Make sure the returned list of strings are sorted.
+
+************************************************************************************************************************************
+TIME:O(2^N)
+SPACE:o(N)
+
+
+void backtrack(int n,int open,vector<char>&temp,vector<string>&ans)
+{
+    if(n==0)
+    {
+        if(open==0)
+        {
+            string str="";
+            for(int i=0;i<temp.size();i++)
+            {
+                str+=temp[i];
+            }
+            
+            if(str!="")
+            {
+             ans.push_back(str);
+            }
+        }
+        return ;
+    }
+    
+    
+    open++;
+    temp.push_back('(');
+    backtrack(n-1,open,temp,ans);
+    temp.pop_back();
+    open--;
+    
+    if(open>0)
+    {
+        open--;
+        temp.push_back(')');
+        backtrack(n-1,open,temp,ans);
+        temp.pop_back();
+       
+    }
+    
+ 
+    return;
+}
+vector<string> Solution::generateParenthesis(int A) 
+{
+    vector<char>temp;
+    vector<string>ans;
+    backtrack(2*A,0,temp,ans);
+    return ans;
+}
