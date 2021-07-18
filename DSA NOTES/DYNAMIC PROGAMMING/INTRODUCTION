@@ -1,0 +1,69 @@
+DIFFERENCE BETWEEN BACTRACKING AND DYNAMIC PROGAMMING
+
+DYNAMIC PROGRAMMING:
+Kise position par ek baar agar visit karle toh uski saari possibilities cover ho jani chaiye aisa na ho ki koi possibility reh jaye aur hum answer store 
+karle(matlb subproblems repetitive hone haiye).
+
+For example :
+Word search wale question mein kisi position par ja rhe the toh jha se uspar aaye hai vo visit nhi kar sakte the baki saare lekin question ke according
+humme all 4 direction mein jana tha isliye usme hum store nhi kar sakte because agar store karenge toh kisi 3 direction ki possibility lekar hi answer 
+store ho jayega aur ek possibility chut jayegi isliye ismein BACTRACKING use karenge kyunki humhe jabhi us position par paunchenge humesha pura 
+explore karna padega.
+
+**********************************************************************************************************************************************************
+WHEN TO USE DYNAMIC PROGRAMMING
+
+1. OPTIMAL (MAXIMUM,MINIMUM,LONGEST,LARGEST,SMALLEST,SHORTEST)
+2. CHOICES GIVEN HO (MATLB RECURSION SE HO SAKTA HO)(MATLB KISE BE CHOICE KO LEKAR ANSWER AA SAKTA HAI)
+3. REPPITIVE SUBPROBLEMS HO
+
+**************************************************************************************************************************************************************
+
+STEPS TO SOLVE A NW QUESTION OF DYNAMIC PROGRAMMING:
+
+1. WRITE RECURSIVE CODE
+2. MEMOIZE THE RECURSIVE CODE
+3. TOP DOWN (TRICK: agar samjh na aaye kaise table fill ho rhi hai toh memoize version mein jitne bhi variable chang ho rh ho unhe replace karlo i,j,k.... se aur uske corresponding expresission likhle
+function call  ko remove karkakr dp table se replce karlo then pta chaljayega ki current value fill karne ke liye kaunse values chaiye aur bas usse fill kardo
+aur phir bas jaise memoize version likha waise likhdo 
+
+replace:
+function call: dp table
+recursion terminate condition: initialize condition of dp
+
+)
+
+
+*************************************************************************************************************************************************
+SPACE OPTIMIZATION TECHNIQUES IN DYNAMIC PROGRAMMING:
+
+CASE 1:
+If dp[i][j] depends upon (i-1,j) &(i,j-1) OR (i-1,j)(i,j-1)(i-1,j-1)  [means we just need value from two rows at at a time one from current row and one from above row]
+Solution: dp[i][j]=dp[i%2][j] && dp[(i-1)%2][j]
+
+CASE 2:
+If dp[i][j] depends upon (i-1,j)&&(i-1,j-1)  [means when we need value just from one row from above row]
+Solution: dp[i][j]
+
+CASE 3:
+If there are just finite number of columns we can use fixed number of variables
+Example: buy and sell stock
+
+CASE 4: Optimization technique of 2-d knapsack to 1-d knapsack
+**************************************************************************************************************************************************
+
+PATTERNS IN DYUNAMIC PROGRAMMING:
+1.Longest onsecutive sequence
+2.Knapsack (bounded and unbounded)
+3. String
+4. Matrix
+5.Cumulative Sum
+
+*************************************************************************************************************************************************
+TRICKS:
+
+1.When the current decision to take this choice or not depends upon the choices u have made in past then we can take an extra boolean variable which makes it more easy to write 
+DP . 
+EXAMPLE: 
+BUY AND SELL STOCK in this question we can buy or sell the stock at any day we have to choices (either buy or sell)  but the current choice that
+whether we can sell or not or we can buy or not depends upon past choice because we can sell only if we have buyed in past and we can buy only when we dont have any stock in hand currenty.
